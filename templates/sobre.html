@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+
+    <div>
+        <h1>Sobre Nós</h1>
+        
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
+                <li><a href="{{ url_for('contatos') }}">Contatos</a></li>
+            </ul>
+        
+    </div>
+
+    <section>
+        <h2>Bem-vindo à nossa empresa!</h2>
+        <p>Somos uma empresa focada em oferecer soluções inovadoras para nossos clientes. Nossa missão é proporcionar qualidade e excelência em todos os nossos serviços.</p>
+        <p>Desde nossa fundação, temos trabalhado para crescer e fazer a diferença em nosso setor, com o objetivo de trazer resultados concretos e satisfatórios para todos.</p>
+    </section>
+
+{% endblock %}

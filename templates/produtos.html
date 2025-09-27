@@ -1,0 +1,59 @@
+
+
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1>{{ titulo }}</h1>
+
+<div class="container mt-4">
+    
+        <!-- Barra de ações: criar e pesquisar -->
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{{ url_for('cadastrar_produto') }}" class="btn btn-success">Criar Produto</a>
+
+        
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th colspan="4" class="text-center" >Ações</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <td>{{ produto.id}}</td>
+
+                <td>
+                    {% if produto.imagem %}
+                        <img src="{{ url_for('static', filename=produto.imagem) }}" alt="Imagem do Produto" width="50">
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+
+                <td>{{ produto.nome}}</td>
+                <td>{{ produto.price | default(0) | round(2) }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ url_for('editar_produto', id=produto.id)}}">Editar Produto</a>
+                    <a class="btn btn-danger" href="{{ url_for('deletar_produto', id=produto.id)}}">Deletar Produto</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">
+                    Nenhum produto encontrado!
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<h1>{{ titulo }}</h1>
+
+<div class="container mt-4">
+    
+        <!-- Barra de ações: criar e pesquisar -->
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{{ url_for('cadastrar_usuario') }}" class="btn btn-success">Criar Usuario</a>
+
+        
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th colspan="4" class="text-center" >Ações</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.id}}</td>
+
+                <td>{{ usuario.name}}</td>
+                <td>{{ usuario.email}}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ url_for('editar_usuario', id=usuario.id)}}">Editar usuario</a>
+                    <a class="btn btn-danger" href="{{ url_for('deletar_usuario', id=usuario.id)}}">Deletar usuario</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">
+                    Nenhum usuario encontrado!
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}
+
+
