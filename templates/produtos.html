@@ -38,7 +38,7 @@
                     {% endif %}
                 </td>
 
-                <td>{{ produto.nome}}</td>
+                <td>{{ produto.name}}</td>
                 <td>{{ produto.price | default(0) | round(2) }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ url_for('editar_produto', id=produto.id)}}">Editar Produto</a>
